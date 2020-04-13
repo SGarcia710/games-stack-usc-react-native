@@ -18,6 +18,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import {InputContainer} from '../../components/Input';
+
 const LoginScreen = props => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
@@ -25,54 +27,38 @@ const LoginScreen = props => {
     // console.log(`Email: ${email} y Password: ${password}.`);
     props.navigation.navigate('GameOne');
   };
+  const onPressSignUpButton = () => {
+    props.navigation.navigate('Signup');
+  };
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
+    <View style={styles.screenContainer}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.title}>Bienvenido</Text>
-        <View>
-          <Text style={styles.text}>Correo electrónico:</Text>
-          <TextInput
-            textContentType="emailAddress"
-            spellCheck={false}
-            autoCorrect={false}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
-            style={styles.input}
-            onChange={text => {
-              onChangeEmail(text.nativeEvent.text);
-            }}
-            value={email}
-          />
-        </View>
-        <View>
-          <Text style={styles.text}>Contraseña:</Text>
-          <TextInput
-            textContentType="password"
-            spellCheck={false}
-            autoCorrect={false}
-            autoCapitalize="none"
-            autoCompleteType="password"
-            style={styles.input}
-            onChange={text => {
-              // console.log(text.nativeEvent.text);
-              onChangePassword(text.nativeEvent.text);
-            }}
-            value={password}
-          />
-        </View>
-        {/* <Button
-          onPress={onPressLoginButton}
-          title="Iniciar sesión"
-          color="#841584"
-        /> */}
-
+        <InputContainer
+          labelText="Correo electrónico"
+          textContentType="emailAddress"
+          autoCompleteType="email"
+          keyboardType="email-address"
+          onChange={onChangeEmail}
+          value={email}
+        />
+        <InputContainer
+          labelText="Contraseña"
+          textContentType="password"
+          autoCompleteType="password"
+          keyboardType="email-address"
+          onChange={onChangePassword}
+          value={password}
+        />
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={onPressLoginButton}
           title="Presioname">
           <Text style={styles.buttonText}>Iniciar sesión</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPressSignUpButton} title="Presioname">
+          <Text style={styles.signUpLink}>Registrar paciente</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </View>
@@ -80,30 +66,29 @@ const LoginScreen = props => {
 };
 
 const styles = StyleSheet.create({
+  screenContainer: {
+    width: '100%',
+    height: '100%',
+  },
+  container: {
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#232323',
+  },
   title: {
     color: 'white',
-    fontSize: 35,
+    fontSize: 55,
     fontWeight: 'bold',
-    textAlign: 'center',
     marginBottom: 20,
   },
-  text: {
-    color: 'white',
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  input: {
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    width: 250,
-    backgroundColor: 'white',
-    fontSize: 20,
-  },
+
   buttonContainer: {
-    marginTop: 30,
+    marginTop: 20,
     backgroundColor: 'white',
-    // width: 180,
+    width: 220,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -114,14 +99,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: 'black',
   },
-  container: {
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#232323',
-    paddingHorizontal: 12,
+  signUpLink: {
+    color: 'white',
+    fontSize: 18,
+    marginTop: 20,
   },
 });
 
