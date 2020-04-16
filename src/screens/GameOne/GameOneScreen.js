@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import MainStyles from '../../assets/styles';
 
 import rick from '../../assets/images/Rick.png';
 import morty from '../../assets/images/Morty.png';
@@ -103,7 +104,9 @@ class GameOneScreen extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!this.state.finished) {
       console.log(
-        `Es el nivel ${this.state.level} y han transcurrido ${this.state.levelTime} segundos.`,
+        `Es el nivel ${this.state.level} y han transcurrido ${
+          this.state.levelTime
+        } segundos.`,
       );
 
       if (this.state.level === this.state.levels.length) {
@@ -158,7 +161,7 @@ class GameOneScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#262A33',
+    backgroundColor: MainStyles.backgroundColor,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

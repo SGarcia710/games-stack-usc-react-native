@@ -7,11 +7,15 @@ import 'react-native-gesture-handler';
  * @flow
  */
 import React from 'react';
-import LoginScreen from './screens/Login';
-import SignupScreen from './screens/Signup';
-import GameOneScreen from './screens/GameOne';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+
+import LoginScreen from './screens/Login';
+import MenuScreen from './screens/Menu';
+import RegisterStudentScreen from './screens/RegisterStudent';
+import GamesMenuScreen from './screens/GamesMenu';
+import GameOneScreen from './screens/GameOne';
 
 const Stack = createStackNavigator();
 
@@ -25,9 +29,19 @@ const App = () => {
           component={LoginScreen}
         />
         <Stack.Screen
-          name="Signup"
+          name="RegisterStudent"
           options={{headerShown: false}}
-          component={SignupScreen}
+          component={RegisterStudentScreen}
+        />
+        <Stack.Screen
+          name="Menu"
+          options={{headerShown: false}}
+          component={MenuScreen}
+        />
+        <Stack.Screen
+          name="GamesMenu"
+          options={{headerShown: false}}
+          component={GamesMenuScreen}
         />
         <Stack.Screen
           name="GameOne"

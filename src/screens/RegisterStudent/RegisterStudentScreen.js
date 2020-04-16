@@ -18,8 +18,10 @@ import {
 } from 'react-native';
 
 import {InputContainer, styles as InputStyles} from '../../components/Input';
+import MainStyles from '../../assets/styles';
+import {createStudentController} from '../../controllers/studentsController';
 
-const SignupScreen = props => {
+const RegisterStudentScreen = props => {
   const [names, onChangeNames] = React.useState('');
   const [lastNames, onChangeLastNames] = React.useState('');
   const [code, onChangeCode] = React.useState('');
@@ -27,13 +29,14 @@ const SignupScreen = props => {
 
   const onPressButton = () => {
     // console.log(`Email: ${email} y Password: ${password}.`);
+    createStudentController(names, lastNames, code, date);
     props.navigation.navigate('Login');
   };
 
   return (
     <View style={styles.screenContainer}>
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Registro de paciente</Text>
+        <Text style={styles.title}>Registro de estudiante</Text>
         <InputContainer
           labelText="Nombres"
           textContentType="emailAddress"
@@ -79,7 +82,7 @@ const SignupScreen = props => {
               height: 30,
             },
             placeholderText: {color: 'black', fontSize: 16},
-            dateText: {color: 'white', fontSize: 18},
+            dateText: {color: 'black', fontSize: 18},
           }}
           onDateChange={onChangeDate}
         />
@@ -88,9 +91,6 @@ const SignupScreen = props => {
           onPress={onPressButton}
           title="Presioname">
           <Text style={styles.buttonText}>Registrar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onPressButton} title="Presioname">
-          <Text style={styles.signUpLink}>Iniciar sesión</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </View>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#232323',
+    backgroundColor: MainStyles.backgroundColor,
   },
   title: {
     color: 'white',
@@ -131,11 +131,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: 'black',
   },
-  signUpLink: {
-    color: 'white',
-    fontSize: 18,
-    marginTop: 20,
-  },
 });
 
-export default SignupScreen;
+export default RegisterStudentScreen;

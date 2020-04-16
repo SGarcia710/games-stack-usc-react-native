@@ -19,17 +19,18 @@ import {
 } from 'react-native';
 
 import {InputContainer} from '../../components/Input';
+import MainStyles from '../../assets/styles';
 
 const LoginScreen = props => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const onPressLoginButton = () => {
     // console.log(`Email: ${email} y Password: ${password}.`);
-    props.navigation.navigate('GameOne');
+    props.navigation.navigate('Menu');
   };
-  const onPressSignUpButton = () => {
-    props.navigation.navigate('Signup');
-  };
+  // const onPressSignUpButton = () => {
+  //   props.navigation.navigate('Signup');
+  // };
 
   return (
     <View style={styles.screenContainer}>
@@ -57,9 +58,9 @@ const LoginScreen = props => {
           title="Presioname">
           <Text style={styles.buttonText}>Iniciar sesión</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={onPressSignUpButton} title="Presioname">
-          <Text style={styles.signUpLink}>Registrar paciente</Text>
-        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={onPressSignUpButton} title="Presioname">
+          <Text style={styles.signUpLink}>Registrarme</Text>
+        </TouchableOpacity> */}
       </SafeAreaView>
     </View>
   );
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#232323',
+    backgroundColor: MainStyles.backgroundColor,
   },
   title: {
     color: 'white',
