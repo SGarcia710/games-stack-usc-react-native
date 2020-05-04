@@ -1,16 +1,14 @@
 import 'react-native-gesture-handler';
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+
 import React from 'react';
+
+import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {navigationRef} from './utils/RootNavigation';
 
+import LandingScreen from './screens/Landing';
 import LoginScreen from './screens/Login';
 import MenuScreen from './screens/Menu';
 import RegisterStudentScreen from './screens/RegisterStudent';
@@ -21,8 +19,14 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
+      <StatusBar hidden={true} />
       <Stack.Navigator>
+        <Stack.Screen
+          name="Landing"
+          options={{headerShown: false}}
+          component={LandingScreen}
+        />
         <Stack.Screen
           name="Login"
           options={{headerShown: false}}

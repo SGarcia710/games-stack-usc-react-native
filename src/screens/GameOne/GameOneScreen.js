@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import MainStyles from '../../assets/styles';
+import {PURPLE_COLOR} from '../../assets/styles';
 
 import rick from '../../assets/images/Rick.png';
 import morty from '../../assets/images/Morty.png';
@@ -161,7 +161,7 @@ class GameOneScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: MainStyles.backgroundColor,
+    backgroundColor: PURPLE_COLOR,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

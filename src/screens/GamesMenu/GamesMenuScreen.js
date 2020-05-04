@@ -1,18 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {useState} from 'react';
 
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import RNPickerSelect, {defaultStyles} from 'react-native-picker-select';
 
-import {MenuButton} from '../../components/MenuButton';
-import MainStyles from '../../assets/styles';
+import Button from '../../components/Button';
+import {
+  PURPLE_COLOR,
+  LIGHT_PURPLE_COLOR,
+  WHITE_COLOR,
+} from '../../assets/styles';
 
 const GamesMenuScreen = props => {
   const [selectedStudent, setSelectedStudent] = useState('');
@@ -66,12 +62,19 @@ const GamesMenuScreen = props => {
         </View>
         <View style={styles.subContainer}>
           <Text style={styles.subTitle}>Seleccionar juego</Text>
-          <MenuButton onPress={() => onPressGameButton(1)} text="Juego 1" />
-          <MenuButton onPress={() => onPressGameButton(2)} text="Juego 2" />
-          {/* <MenuButton onPress={() => onPressGameButton(3)} text="Juego 3" />
-          <MenuButton onPress={() => onPressGameButton(4)} text="Juego 4" />
-          <MenuButton onPress={() => onPressGameButton(5)} text="Juego 5" />
-          <MenuButton onPress={() => onPressGameButton(6)} text="Juego 6" /> */}
+          <Button
+            onPress={() => onPressGameButton(1)}
+            text="Go/nogo"
+            backgroundColor={LIGHT_PURPLE_COLOR}
+            fontColor={WHITE_COLOR}
+            marginBottom={11}
+          />
+          <Button
+            onPress={() => onPressGameButton(2)}
+            text="La forma ambivalente"
+            backgroundColor={LIGHT_PURPLE_COLOR}
+            fontColor={WHITE_COLOR}
+          />
         </View>
       </SafeAreaView>
     </View>
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: MainStyles.backgroundColor,
+    backgroundColor: PURPLE_COLOR,
   },
   subContainer: {
     alignItems: 'center',

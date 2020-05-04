@@ -18,8 +18,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {MenuButton} from '../../components/MenuButton';
-import MainStyles from '../../assets/styles';
+import menuImageOne from '../../assets/images/MenuItemOne.png';
+import menuImageTwo from '../../assets/images/MenuItemTwo.png';
+import menuImageThree from '../../assets/images/MenuItemThree.png';
+
+import Header from '../../components/Header';
+import MenuButton from '../../components/MenuButton';
+import {PURPLE_COLOR} from '../../assets/styles';
 
 const MenuScreen = props => {
   const onPressRegisterStudent = () => {
@@ -37,40 +42,49 @@ const MenuScreen = props => {
 
   return (
     <View style={styles.screenContainer}>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Games Stack</Text>
+      <View style={styles.header}>
+        <Header title="GamesStack" />
+      </View>
+      <View style={styles.buttons}>
         <MenuButton
+          image={menuImageOne}
           onPress={onPressRegisterStudent}
           text="Registrar estudiante"
+          marginBottom={20}
         />
-        <MenuButton onPress={onPressStudentsList} text="Lista de estudiantes" />
         <MenuButton
+          image={menuImageTwo}
+          onPress={onPressStudentsList}
+          text="Lista de estudiantes"
+          marginBottom={20}
+        />
+        <MenuButton
+          image={menuImageThree}
           onPress={onPressEvaluateStudent}
           text="Evaluar estudiante"
         />
-      </SafeAreaView>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screenContainer: {
+    backgroundColor: PURPLE_COLOR,
     width: '100%',
     height: '100%',
+    paddingHorizontal: 79,
+    paddingVertical: 80,
   },
-  container: {
-    display: 'flex',
+  header: {
     width: '100%',
-    height: '100%',
-    alignItems: 'center',
+    height: '20%',
+  },
+  buttons: {
+    width: '100%',
+    height: '80%',
     justifyContent: 'center',
-    backgroundColor: MainStyles.backgroundColor,
-  },
-  title: {
-    color: 'white',
-    fontSize: 55,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    alignItems: 'center',
   },
 });
 
