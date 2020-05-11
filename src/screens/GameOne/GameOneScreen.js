@@ -1,24 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  StatusBar,
-  Image,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, SafeAreaView, Image, View} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {PURPLE_COLOR} from '../../assets/styles';
+import {
+  LIGHT_YELLOW_COLOR,
+  WHITE_COLOR,
+  BROWN_COLOR,
+} from '../../assets/styles';
+import Button from '../../components/Button';
+import SessionFinishedScreen from '../SessionFinished/SessionFinishedScreen';
 
 import rick from '../../assets/images/Rick.png';
 import morty from '../../assets/images/Morty.png';
@@ -126,42 +115,36 @@ class GameOneScreen extends Component {
   componentWillUnmount() {}
 
   render() {
-    return (
-      <>
-        <StatusBar barStyle="dark-content" />
+    if (!this.state.finished) {
+      return (
         <SafeAreaView style={styles.container}>
-          {!this.state.finished && (
-            <>
-              <View style={styles.images}>
-                <Image style={styles.image} source={rick} />
-                <Image
-                  style={styles.image}
-                  source={!this.state.levels[this.state.level] ? rick : morty}
-                />
-              </View>
-              {/* https://stackoverflow.com/a/37124054 */}
-              <TouchableOpacity
-                style={styles.buttonContainer}
-                onPress={() => this.onButtonPress()}
-                title="Presioname">
-                <Text style={styles.buttonText}>Presiona aquí</Text>
-              </TouchableOpacity>
-            </>
-          )}
-          {this.state.finished && (
-            <View style={styles.finishedContainer}>
-              <Text style={styles.finishedText}>JUEGO TERMINADO</Text>
+          <>
+            <View style={styles.images}>
+              <Image style={styles.image} source={rick} />
+              <Image
+                style={styles.image}
+                source={!this.state.levels[this.state.level] ? rick : morty}
+              />
             </View>
-          )}
+            {/* https://stackoverflow.com/a/37124054 */}
+            <Button
+              onPress={() => this.onButtonPress()}
+              text="Presiona aquí"
+              backgroundColor={LIGHT_YELLOW_COLOR}
+              fontColor={BROWN_COLOR}
+            />
+          </>
         </SafeAreaView>
-      </>
-    );
+      );
+    } else {
+      return <SessionFinishedScreen />;
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: WHITE_COLOR,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -173,34 +156,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 120,
     height: 180,
-  },
-  buttonContainer: {
-    marginTop: 30,
-    backgroundColor: 'white',
-    width: 180,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-  },
-  buttonText: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  finishedContainer: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  finishedText: {
-    fontSize: 30,
-    fontWeight: '900',
-    color: 'white',
   },
 });
 

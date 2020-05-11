@@ -7,7 +7,7 @@ import {goBack} from '../utils/RootNavigation';
 
 import {MULI_REGULAR, MULI_BLACK, WHITE_COLOR} from '../assets/styles';
 
-const NavigationHeader = ({title, navigation}) => {
+const NavigationHeader = ({title}) => {
   return (
     <View>
       <View style={styles.returnTextContainer}>

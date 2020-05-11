@@ -1,4 +1,4 @@
-import {createStudent} from '../services/auth/students';
+import {createStudent} from '../services/students';
 
 export const createStudentController = async (names, lastNames, code, date) => {
   try {

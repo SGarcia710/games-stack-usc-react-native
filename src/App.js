@@ -12,6 +12,7 @@ import LandingScreen from './screens/Landing';
 import LoginScreen from './screens/Login';
 import MenuScreen from './screens/Menu';
 import RegisterStudentScreen from './screens/RegisterStudent';
+import StudentsListScreen from './screens/StudentsList';
 import GamesMenuScreen from './screens/GamesMenu';
 import GameOneScreen from './screens/GameOne';
 
@@ -46,6 +47,11 @@ const App = () => {
           name="GamesMenu"
           options={{headerShown: false}}
           component={GamesMenuScreen}
+        />
+        <Stack.Screen
+          name="StudentsList"
+          options={{headerShown: false}}
+          component={StudentsListScreen}
         />
         <Stack.Screen
           name="GameOne"

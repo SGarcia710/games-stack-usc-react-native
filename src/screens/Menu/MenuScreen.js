@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 
 import {
@@ -32,8 +24,7 @@ const MenuScreen = props => {
   };
   const onPressStudentsList = () => {
     // console.log(`Email: ${email} y Password: ${password}.`);
-    // props.navigation.navigate('GameOne');
-    console.log('Lista de estudiantes');
+    props.navigation.navigate('StudentsList');
   };
   const onPressEvaluateStudent = () => {
     props.navigation.navigate('GamesMenu');

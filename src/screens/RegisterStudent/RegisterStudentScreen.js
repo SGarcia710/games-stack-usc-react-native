@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import Input from '../../components/Input';
 import DateInput from '../../components/DateInput';
@@ -24,7 +24,7 @@ const RegisterStudentScreen = props => {
   const onPressButton = () => {
     // console.log(`Email: ${email} y Password: ${password}.`);
     createStudentController(names, lastNames, code, date);
-    props.navigation.navigate('Login');
+    props.navigation.navigate('Menu');
   };
 
   return (
