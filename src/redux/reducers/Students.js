@@ -2,15 +2,15 @@ import * as Students from '../actions/Students';
 
 const INITIAL_STATE = {
   studentsList: null,
-  selectedStudentId: null,
+  selectedStudent: null,
   errorMessage: null,
   isFetching: false,
   studentsLoaded: false,
 };
 
 // Handlers
-const setSelectedStudent = (state, {selectedStudentId}) => {
-  return {...state, selectedStudentId};
+const setSelectedStudent = (state, {selectedStudent}) => {
+  return {...state, selectedStudent};
 };
 
 const fetchAllOwnStudents = (state, action) => ({

@@ -21,25 +21,20 @@ const GamesMenuScreen = props => {
   useEffect(() => {
     return function cleanup() {
       props.setSelectedGame(null);
+      props.setSelectedStudent(null);
     };
   }, []);
 
-  const [selectedStudent, setSelectedStudent] = useState('');
-
-  const students = [
-    {
-      label: 'Estudiante 1',
-      value: 'Estudiante 1',
-    },
-    {
-      label: 'Estudiante 2',
-      value: 'Estudiante 2',
-    },
-    {
-      label: 'Estudiante 3',
-      value: 'Estudiante 3',
-    },
-  ];
+  const dropdownStudents =
+    props.studentsList.length > 0
+      ? props.studentsList.map(student => {
+          const {nombres, apellidos} = student.datos;
+          return {
+            label: `${nombres} ${apellidos}`,
+            value: student._id,
+          };
+        })
+      : [];
 
   const onPressGameButton = gameNumber => {
     switch (gameNumber) {
@@ -62,9 +57,9 @@ const GamesMenuScreen = props => {
             <Dropdown
               labelText="Seleccionar estudiante"
               placeholder="Elige un estudiante..."
-              items={students}
-              onValueChange={setSelectedStudent}
-              value={selectedStudent}
+              items={dropdownStudents}
+              onValueChange={props.setSelectedStudent}
+              value={props.selectedStudent}
               marginBottom={79}
             />
           )}

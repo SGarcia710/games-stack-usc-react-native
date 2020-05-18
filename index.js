@@ -1,6 +1,7 @@
 import {AppRegistry, StatusBar} from 'react-native';
 import React from 'react';
 
+import './src/config/ReactotronConfig';
 import {name as appName} from './app.json';
 
 /* Redux */

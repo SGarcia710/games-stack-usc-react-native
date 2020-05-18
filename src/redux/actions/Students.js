@@ -6,9 +6,9 @@ export const Types = {
 };
 
 export const Actions = {
-  setSelectedStudent: selectedStudentId => ({
+  setSelectedStudent: selectedStudent => ({
     type: Types.SetSelectedStudent,
-    selectedStudentId,
+    selectedStudent,
   }),
   fetchAllOwnStudents: userEmail => ({
     type: Types.FetchAllOwnStudents,
