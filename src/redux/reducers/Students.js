@@ -1,6 +1,6 @@
 import * as Students from '../actions/Students';
 
-export const INITIAL_STATE = {
+const INITIAL_STATE = {
   studentsList: null,
   selectedStudentId: null,
   errorMessage: null,
@@ -28,7 +28,7 @@ const requestFailure = (state, action) => ({
   errorMessage: action.error,
 });
 
-// actions ->
+// Binding actions to handlers
 const reducerMap = {
   [Students.Types.SetSelectedStudent]: setSelectedStudent,
   [Students.Types.FetchAllOwnStudents]: fetchAllOwnStudents,

@@ -1,36 +1,47 @@
-import {LOGIN, LOGOUT, START_GUEST_SESSION} from '../actions/auth';
+import * as Auth from '../actions/Auth';
 
-const initialState = {
+const INITIAL_STATE = {
   isLoggedIn: false,
-  user: null,
+  userEmail: null,
   isGuest: null,
+  isFetching: false,
+  errorMessage: null,
 };
 
-export const auth = (state = initialState, action) => {
-  switch (action.type) {
-    case LOGIN: {
-      return {
-        ...state,
-        user: action.payload.user,
-        isLoggedIn: true,
-      };
-    }
-    case START_GUEST_SESSION: {
-      return {
-        ...state,
-        user: 'Invitado',
-        isLoggedIn: true,
-        isGuest: true,
-      };
-    }
-    case LOGOUT: {
-      return {
-        ...state,
-        user: null,
-        isLoggedIn: false,
-      };
-    }
-    default:
-      return state;
-  }
+// Handlers
+const checkUser = (state, action) => ({
+  ...INITIAL_STATE,
+  isFetching: true,
+});
+
+const loginFailure = (state, action) => ({
+  ...state,
+  isFetching: false,
+  errorMessage: action.error,
+});
+
+const loginUser = (state, {userEmail}) => {
+  return {...state, userEmail, isLoggedIn: true, isFetching: false};
+};
+
+const logoutUser = (state, action) => {
+  return {...state, user: null, isLoggedIn: false};
+};
+
+const startGuestSession = (state, action) => {
+  return {...state, userEmail: 'Invitado', isLoggedIn: true, isGuest: true};
+};
+
+// Binding actions to handlers
+const reducerMap = {
+  [Auth.Types.CheckUser]: checkUser,
+  [Auth.Types.LoginFailure]: loginFailure,
+  [Auth.Types.LoginUser]: loginUser,
+  [Auth.Types.LogoutUser]: logoutUser,
+  [Auth.Types.StartGuestSession]: startGuestSession,
+};
+
+export const reducer = (state = INITIAL_STATE, action) => {
+  const handler = reducerMap[action.type];
+  return typeof handler === 'function' ? handler(state, action) : state;
 };

@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {startGuestSession} from '../../redux/actions/auth';
+import * as Auth from '../../redux/actions/Auth';
 
 import LandingScreen from './LandingScreen';
 
 const mapDispatchToProps = dispatch => {
   return {
-    startGuestSession: () => dispatch(startGuestSession()),
+    startGuestSession: () => dispatch(Auth.Actions.startGuestSession()),
   };
 };
 

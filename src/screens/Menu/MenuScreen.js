@@ -18,7 +18,7 @@ const MenuScreen = props => {
 
   useEffect(() => {
     if (!props.isGuest && !props.studentsLoaded) {
-      props.fetchAllOwnStudents(props.user);
+      props.fetchAllOwnStudents(props.userEmail);
     }
   }, []);
 

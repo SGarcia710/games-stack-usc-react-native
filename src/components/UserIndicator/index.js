@@ -4,7 +4,7 @@ import {UserIndicator} from './UserIndicator';
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    userEmail: state.auth.userEmail,
   };
 };
 

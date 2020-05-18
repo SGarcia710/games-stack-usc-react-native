@@ -14,7 +14,7 @@ const LoginScreen = props => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const onPressLoginButton = () => {
-    props.login(email, password);
+    props.checkUser(email, password);
   };
 
   return (

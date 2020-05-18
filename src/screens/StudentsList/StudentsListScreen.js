@@ -85,7 +85,7 @@ const StudentsListScreen = props => {
               <Table>
                 {studentsDataFormatted.map(rowData => (
                   <Row
-                    key={new Date().getTime}
+                    key={() => uuidv4()}
                     data={rowData}
                     widthArr={widthArr}
                     style={styles.tableRow}

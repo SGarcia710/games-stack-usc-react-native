@@ -11,7 +11,7 @@ export const UserIndicator = props => {
   return (
     <View style={styles.container}>
       <View style={styles.image} />
-      <Text style={styles.userName}>{props.user}</Text>
+      <Text style={styles.userName}>{props.userEmail}</Text>
     </View>
   );
 };

@@ -6,7 +6,7 @@ import MenuScreen from './MenuScreen';
 const mapStateToProps = state => {
   return {
     isGuest: state.auth.isGuest,
-    user: state.auth.user,
+    userEmail: state.auth.userEmail,
     isFetching: state.students.isFetching,
     studentsLoaded: state.students.studentsLoaded,
   };

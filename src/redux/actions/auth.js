@@ -1,24 +1,29 @@
-export const LOGIN = '[Auth] Login user';
-export const LOGOUT = '[Auth] Logout user';
-export const START_GUEST_SESSION = '[Auth] Guest session started';
-
-export const login = (user, password) => {
-  //TODO: Aquí hago el fetch
-  console.log(user, password);
-  return {
-    type: LOGIN,
-    payload: {user},
-  };
+export const Types = {
+  CheckUser: 'auth.checkUser',
+  LoginFailure: 'auth.loginFailure',
+  LoginUser: 'auth.loginUser',
+  LogoutUser: 'auth.logoutUser',
+  StartGuestSession: 'auth.startGuestSession',
 };
 
-export const startGuestSession = () => {
-  return {
-    type: START_GUEST_SESSION,
-  };
-};
-
-export const logout = () => {
-  return {
-    type: LOGOUT,
-  };
+export const Actions = {
+  checkUser: (userEmail, password) => ({
+    type: Types.CheckUser,
+    userEmail,
+    password,
+  }),
+  loginFailure: error => ({
+    type: Types.LoginFailure,
+    error,
+  }),
+  loginUser: userEmail => ({
+    type: Types.LoginUser,
+    userEmail,
+  }),
+  logoutUser: () => ({
+    type: Types.LogoutUser,
+  }),
+  startGuestSession: () => ({
+    type: Types.StartGuestSession,
+  }),
 };

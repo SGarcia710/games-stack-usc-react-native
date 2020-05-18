@@ -73,7 +73,7 @@ const GamesMenuScreen = props => {
             {props.gamesList.map(game => {
               return (
                 <Button
-                  key={uuidv4()}
+                  key={() => uuidv4()}
                   onPress={() => props.setSelectedGame(game.id)}
                   text={game.title}
                   backgroundColor={LIGHT_PURPLE_COLOR}

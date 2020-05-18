@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {setSelectedGame} from '../../redux/actions/games';
+import * as Games from '../../redux/actions/Games';
 
 import GamesMenuScreen from './GamesMenuScreen';
 
 const mapDispatchToProps = dispatch => {
   return {
     setSelectedGame: setSelectedGameId =>
-      dispatch(setSelectedGame(setSelectedGameId)),
+      dispatch(Games.Actions.setSelectedGame(setSelectedGameId)),
   };
 };
 

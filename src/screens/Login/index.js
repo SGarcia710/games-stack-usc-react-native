@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
-import {login} from '../../redux/actions/auth';
+import * as Auth from '../../redux/actions/Auth';
 
 import LoginScreen from './LoginScreen';
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (user, password) => dispatch(login(user, password)),
+    checkUser: (user, password) =>
+      dispatch(Auth.Actions.checkUser(user, password)),
   };
 };
 
