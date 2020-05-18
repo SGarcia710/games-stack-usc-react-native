@@ -1,7 +1,7 @@
 import {LOGIN, LOGOUT, START_GUEST_SESSION} from '../actions/auth';
 
 const initialState = {
-  loggedIn: false,
+  isLoggedIn: false,
   user: null,
   isGuest: null,
 };
@@ -12,14 +12,14 @@ export const auth = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
-        loggedIn: true,
+        isLoggedIn: true,
       };
     }
     case START_GUEST_SESSION: {
       return {
         ...state,
         user: 'Invitado',
-        loggedIn: true,
+        isLoggedIn: true,
         isGuest: true,
       };
     }
@@ -27,7 +27,7 @@ export const auth = (state = initialState, action) => {
       return {
         ...state,
         user: null,
-        loggedIn: false,
+        isLoggedIn: false,
       };
     }
     default:

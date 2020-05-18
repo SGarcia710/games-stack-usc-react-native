@@ -1,6 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import {startGuestSession} from '../../redux/actions/auth';
+import {StyleSheet, View} from 'react-native';
 import {Header, Button} from '../../components';
 import {
   PURPLE_COLOR,
@@ -13,7 +12,7 @@ import {
 const LandingScreen = props => {
   const onPressGuestSessionButton = () => {
     props.startGuestSession();
-    props.navigation.navigate('Menu');
+    // props.navigation.navigate('Menu');
   };
 
   return (
