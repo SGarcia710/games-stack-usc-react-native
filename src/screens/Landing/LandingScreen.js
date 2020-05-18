@@ -1,8 +1,7 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-
-import Header from '../../components/Header';
-import Button from '../../components/Button';
+import {startGuestSession} from '../../redux/actions/auth';
+import {Header, Button} from '../../components';
 import {
   PURPLE_COLOR,
   WHITE_COLOR,
@@ -12,9 +11,11 @@ import {
 } from '../../assets/styles';
 
 const LandingScreen = props => {
-  const onPressButton = where => {
-    props.navigation.navigate(where);
+  const onPressGuestSessionButton = () => {
+    props.startGuestSession();
+    props.navigation.navigate('Menu');
   };
+
   return (
     <View style={styles.screenContainer}>
       <View style={styles.header}>
@@ -22,7 +23,7 @@ const LandingScreen = props => {
       </View>
       <View style={styles.buttons}>
         <Button
-          onPress={() => onPressButton('Menu')}
+          onPress={onPressGuestSessionButton}
           text="Entrar como invitado"
           icon="users"
           iconPosition="left"
@@ -32,7 +33,7 @@ const LandingScreen = props => {
           marginForText={20}
         />
         <Button
-          onPress={() => onPressButton('Login')}
+          onPress={() => props.navigation.navigate('Login')}
           text="Entrar con cuenta de usuario"
           icon="arrow-right"
           iconPosition="right"

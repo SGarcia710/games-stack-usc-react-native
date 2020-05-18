@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
-import {Table, TableWrapper, Row} from 'react-native-table-component';
+import {Table, Row} from 'react-native-table-component';
 
-import NavigationHeader from '../../components/NavigationHeader';
+import {NavigationHeader} from '../../components';
 
 import {
   PURPLE_COLOR,
-  LIGHT_YELLOW_COLOR,
-  BROWN_COLOR,
   LIGHT_PURPLE_COLOR,
   WHITE_COLOR,
   MULI_MEDIUM,
-  MULI_BOLD,
   MULI_REGULAR,
   DARK_BLUE_COLOR,
 } from '../../assets/styles';
@@ -177,7 +175,7 @@ const StudentsListScreen = props => {
               <Table>
                 {tableData.map((rowData, index) => (
                   <Row
-                    key={index}
+                    key={uuidv4()}
                     data={rowData}
                     widthArr={widthArr}
                     style={styles.tableRow}

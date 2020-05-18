@@ -1,16 +1,12 @@
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
 
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {
-  WHITE_COLOR,
-  MULI_BOLD,
-  LIGHT_PURPLE_COLOR,
-  MULI_REGULAR,
-} from '../assets/styles';
+import {WHITE_COLOR, LIGHT_PURPLE_COLOR, MULI_REGULAR} from '../assets/styles';
+import {Label} from './';
 
-const DateInput = ({
+export const DateInput = ({
   labelText,
   onDateChange,
   date,
@@ -18,14 +14,16 @@ const DateInput = ({
   marginBottom,
 }) => {
   return (
-    <TouchableOpacity
+    <View
       style={{
-        ...styles.inputContainer,
         marginBottom: marginBottom ? marginBottom : 0,
       }}>
-      <Text style={styles.dateInputLabel}>{labelText}</Text>
+      <Label text={labelText} />
       <DatePicker
-        style={{width: 350}}
+        style={{
+          width: styles.dateInput.width,
+          marginTop: 11,
+        }}
         date={date}
         mode="date"
         placeholder={placeholder}
@@ -44,17 +42,11 @@ const DateInput = ({
         }}
         onDateChange={onDateChange}
       />
-    </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  dateInputLabel: {
-    color: WHITE_COLOR,
-    fontSize: 18,
-    fontFamily: MULI_BOLD,
-    marginBottom: 20,
-  },
   dateInput: {
     marginLeft: 0,
     borderWidth: 0,

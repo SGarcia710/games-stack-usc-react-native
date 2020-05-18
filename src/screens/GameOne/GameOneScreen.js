@@ -6,7 +6,7 @@ import {
   WHITE_COLOR,
   BROWN_COLOR,
 } from '../../assets/styles';
-import Button from '../../components/Button';
+import {Button} from '../../components';
 import SessionFinishedScreen from '../SessionFinished/SessionFinishedScreen';
 
 import rick from '../../assets/images/Rick.png';

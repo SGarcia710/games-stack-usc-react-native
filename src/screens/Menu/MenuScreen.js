@@ -1,21 +1,13 @@
 import React from 'react';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  KeyboardAvoidingView,
-  Text,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import menuImageOne from '../../assets/images/MenuItemOne.png';
 import menuImageTwo from '../../assets/images/MenuItemTwo.png';
 import menuImageThree from '../../assets/images/MenuItemThree.png';
 
-import Header from '../../components/Header';
-import MenuButton from '../../components/MenuButton';
+import {MenuButton, Header} from '../../components';
+
 import {PURPLE_COLOR} from '../../assets/styles';
 
 const MenuScreen = props => {

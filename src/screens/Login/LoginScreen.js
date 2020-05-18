@@ -2,21 +2,20 @@ import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
 
-import Header from '../../components/Header';
-import Button from '../../components/Button';
+import {Header, Button, Input} from '../../components';
+
 import {
   PURPLE_COLOR,
   BROWN_COLOR,
   LIGHT_YELLOW_COLOR,
 } from '../../assets/styles';
 
-import Input from '../../components/Input';
-
 const LoginScreen = props => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const onPressLoginButton = () => {
     // console.log(`Email: ${email} y Password: ${password}.`);
+    props.login(email, password);
     props.navigation.navigate('Menu');
   };
 

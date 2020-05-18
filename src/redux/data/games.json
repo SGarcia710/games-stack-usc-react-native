@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Go/nogo",
+    "description": "Este juego consiste en seleccionar entre Rick y Morty, evaluando la velocidad de sus respuestas al elegir cada uno de estos.",
+    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "La forma ambivalente",
+    "description": "Este juego está en desarrollo 🚨.",
+    "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+  }
+]

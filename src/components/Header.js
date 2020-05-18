@@ -3,7 +3,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {MULI_REGULAR, MULI_BLACK, WHITE_COLOR} from '../assets/styles';
 
-const Header = ({title, subtitle}) => {
+export const Header = ({title, subtitle}) => {
   return (
     <View>
       <Text style={styles.title}>{title}</Text>

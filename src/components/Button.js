@@ -5,7 +5,7 @@ import Icon from 'react-native-feather1s';
 import {MULI_BOLD} from '../assets/styles';
 const ICONS_SIZE = 20;
 
-const Button = ({
+export const Button = ({
   onPress,
   text,
   icon,

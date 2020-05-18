@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ENDPOINT} from '../assets/config/';
+import {ENDPOINT} from '../config/consts';
 
 export const ROUTE = '/estudiantes';
 

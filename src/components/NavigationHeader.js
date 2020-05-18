@@ -7,25 +7,35 @@ import {goBack} from '../utils/RootNavigation';
 
 import {MULI_REGULAR, MULI_BLACK, WHITE_COLOR} from '../assets/styles';
 
-const NavigationHeader = ({title}) => {
+import UserIndicator from './UserIndicator/';
+
+export const NavigationHeader = props => {
   return (
     <View>
-      <View style={styles.returnTextContainer}>
-        <Icon
-          onPress={goBack}
-          name="arrow-left"
-          size={18}
-          color={WHITE_COLOR}
-          thin={false}
-        />
-        <Text style={styles.returnText}> Regresar a la pantalla de inicio</Text>
+      <View style={styles.header}>
+        <View style={styles.returnTextContainer}>
+          <Icon
+            onPress={goBack}
+            name="arrow-left"
+            size={18}
+            color={WHITE_COLOR}
+            thin={false}
+          />
+          <Text style={styles.returnText}>
+            Regresar a la pantalla de inicio
+          </Text>
+        </View>
+        <View>
+          <UserIndicator userName={props.user} />
+        </View>
       </View>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>{props.title}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {flexDirection: 'row', justifyContent: 'space-between'},
   returnTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',

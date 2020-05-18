@@ -1,16 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import RNPickerSelect, {defaultStyles} from 'react-native-picker-select';
-
-import Button from '../../components/Button';
+import {StyleSheet, View} from 'react-native';
+import {
+  Button,
+  Dropdown,
+  Label,
+  GameCard,
+  NavigationHeader,
+} from '../../components';
 import {
   PURPLE_COLOR,
   LIGHT_PURPLE_COLOR,
   WHITE_COLOR,
+  BROWN_COLOR,
+  LIGHT_YELLOW_COLOR,
 } from '../../assets/styles';
 
 const GamesMenuScreen = props => {
+  useEffect(() => {
+    return function cleanup() {
+      props.setSelectedGame(null);
+    };
+  }, []);
+
   const [selectedStudent, setSelectedStudent] = useState('');
 
   const students = [
@@ -28,12 +41,6 @@ const GamesMenuScreen = props => {
     },
   ];
 
-  const placeholder = {
-    label: 'Elige un estudiante...',
-    value: null,
-    color: 'black',
-  };
-
   const onPressGameButton = gameNumber => {
     switch (gameNumber) {
       case 1:
@@ -46,95 +53,78 @@ const GamesMenuScreen = props => {
 
   return (
     <View style={styles.screenContainer}>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Evaluar estudiante</Text>
-        <View style={styles.subContainer}>
-          <Text style={styles.subTitle}>Seleccionar estudiante</Text>
-          <RNPickerSelect
-            placeholder={placeholder}
+      <View style={styles.header}>
+        <NavigationHeader title="Evaluar estudiante" />
+      </View>
+      <View style={styles.body}>
+        <View style={styles.column}>
+          <Dropdown
+            labelText="Seleccionar estudiante"
+            placeholder="Elige un estudiante..."
             items={students}
-            onValueChange={value => {
-              setSelectedStudent(value);
-            }}
-            style={pickerSelectStyles}
+            onValueChange={setSelectedStudent}
             value={selectedStudent}
+            marginBottom={79}
           />
+          <View style={styles.gamesList}>
+            <Label text="Seleccionar juego" />
+            {props.gamesList.map(game => {
+              return (
+                <Button
+                  key={uuidv4()}
+                  onPress={() => props.setSelectedGame(game.id)}
+                  text={game.title}
+                  backgroundColor={LIGHT_PURPLE_COLOR}
+                  fontColor={WHITE_COLOR}
+                  marginBottom={11}
+                />
+              );
+            })}
+          </View>
         </View>
-        <View style={styles.subContainer}>
-          <Text style={styles.subTitle}>Seleccionar juego</Text>
-          <Button
-            onPress={() => onPressGameButton(1)}
-            text="Go/nogo"
-            backgroundColor={LIGHT_PURPLE_COLOR}
-            fontColor={WHITE_COLOR}
-            marginBottom={11}
-          />
-          <Button
-            onPress={() => onPressGameButton(2)}
-            text="La forma ambivalente"
-            backgroundColor={LIGHT_PURPLE_COLOR}
-            fontColor={WHITE_COLOR}
-          />
-        </View>
-      </SafeAreaView>
+        {props.selectedGameId && (
+          <View style={styles.column}>
+            <GameCard
+              {...props.gamesList[props.selectedGameId - 1]}
+              marginBottom={30}
+            />
+            <Button
+              onPress={() => onPressGameButton(props.selectedGameId)}
+              text="Iniciar actividad"
+              icon="arrow-right"
+              iconPosition="right"
+              backgroundColor={LIGHT_YELLOW_COLOR}
+              fontColor={BROWN_COLOR}
+              marginBottom={23}
+              marginForText={132}
+            />
+          </View>
+        )}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screenContainer: {
-    width: '100%',
-    height: '100%',
-  },
-  container: {
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: PURPLE_COLOR,
-  },
-  subContainer: {
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 79,
+    paddingVertical: 80,
     alignItems: 'center',
-    marginBottom: 15,
   },
-  title: {
-    color: 'white',
-    fontSize: 55,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  header: {
+    width: '100%',
+    height: '25%',
   },
-  subTitle: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginBottom: 15,
+  body: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
   },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    width: 400,
-    backgroundColor: 'white',
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-  inputAndroid: {
-    backgroundColor: 'white',
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: 'purple',
-    borderRadius: 8,
-    color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+  column: {
+    width: '48%',
   },
 });
 

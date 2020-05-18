@@ -3,7 +3,7 @@ import React from 'react';
 import {Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {WHITE_COLOR, DARK_BLUE_COLOR, MULI_BOLD} from '../assets/styles';
 
-const MenuButton = ({image, onPress, text, marginBottom}) => {
+export const MenuButton = ({image, onPress, text, marginBottom}) => {
   return (
     <TouchableOpacity
       style={{

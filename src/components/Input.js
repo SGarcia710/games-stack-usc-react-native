@@ -1,14 +1,10 @@
 import React from 'react';
 
-import {TextInput, Text, View, StyleSheet} from 'react-native';
-import {
-  WHITE_COLOR,
-  MULI_BOLD,
-  LIGHT_PURPLE_COLOR,
-  MULI_REGULAR,
-} from '../assets/styles';
+import {TextInput, View, StyleSheet} from 'react-native';
+import {WHITE_COLOR, LIGHT_PURPLE_COLOR, MULI_REGULAR} from '../assets/styles';
+import {Label} from './';
 
-const Input = ({
+export const Input = ({
   labelText,
   textContentType,
   autoCompleteType,
@@ -21,10 +17,9 @@ const Input = ({
   return (
     <View
       style={{
-        ...styles.inputContainer,
         marginBottom: marginBottom ? marginBottom : 0,
       }}>
-      <Text style={styles.inputLabel}>{labelText}</Text>
+      <Label text={labelText} />
       <TextInput
         placeholderTextColor={WHITE_COLOR}
         textContentType={textContentType}
@@ -45,12 +40,6 @@ const Input = ({
 };
 
 const styles = StyleSheet.create({
-  inputLabel: {
-    color: WHITE_COLOR,
-    fontSize: 18,
-    fontFamily: MULI_BOLD,
-    marginBottom: 11,
-  },
   input: {
     borderWidth: 0,
     borderRadius: 10,

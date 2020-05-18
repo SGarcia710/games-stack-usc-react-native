@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import Button from '../../components/Button';
+import {Button} from '../../components';
 import {
   PURPLE_COLOR,
   WHITE_COLOR,

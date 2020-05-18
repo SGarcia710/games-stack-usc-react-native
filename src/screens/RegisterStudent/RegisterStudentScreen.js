@@ -2,10 +2,7 @@ import React from 'react';
 
 import {StyleSheet, View} from 'react-native';
 
-import Input from '../../components/Input';
-import DateInput from '../../components/DateInput';
-import NavigationHeader from '../../components/NavigationHeader';
-import Button from '../../components/Button';
+import {Button, DateInput, Input, NavigationHeader} from '../../components';
 
 import {
   PURPLE_COLOR,
@@ -30,10 +27,7 @@ const RegisterStudentScreen = props => {
   return (
     <View style={styles.screenContainer}>
       <View style={styles.header}>
-        <NavigationHeader
-          title="Registro de estudiante"
-          navigation={props.navigation}
-        />
+        <NavigationHeader title="Registro de estudiante" />
       </View>
       <View style={styles.form}>
         <View style={styles.formColumn}>
