@@ -58,14 +58,16 @@ const GamesMenuScreen = props => {
       </View>
       <View style={styles.body}>
         <View style={styles.column}>
-          <Dropdown
-            labelText="Seleccionar estudiante"
-            placeholder="Elige un estudiante..."
-            items={students}
-            onValueChange={setSelectedStudent}
-            value={selectedStudent}
-            marginBottom={79}
-          />
+          {!props.isGuest && (
+            <Dropdown
+              labelText="Seleccionar estudiante"
+              placeholder="Elige un estudiante..."
+              items={students}
+              onValueChange={setSelectedStudent}
+              value={selectedStudent}
+              marginBottom={79}
+            />
+          )}
           <View style={styles.gamesList}>
             <Label text="Seleccionar juego" />
             {props.gamesList.map(game => {

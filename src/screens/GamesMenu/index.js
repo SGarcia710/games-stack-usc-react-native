@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   return {
     gamesList: state.games.gamesList,
     selectedGameId: state.games.selectedGameId,
-    user: state.auth.user,
+    isGuest: state.auth.isGuest,
   };
 };
 

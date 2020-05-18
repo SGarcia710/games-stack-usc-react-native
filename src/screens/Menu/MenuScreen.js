@@ -15,12 +15,10 @@ const MenuScreen = props => {
     props.navigation.navigate('RegisterStudent');
   };
   const onPressStudentsList = () => {
-    // console.log(`Email: ${email} y Password: ${password}.`);
     props.navigation.navigate('StudentsList');
   };
   const onPressEvaluateStudent = () => {
     props.navigation.navigate('GamesMenu');
-    // console.log('Menu de estudiantes');
   };
 
   return (
@@ -29,18 +27,22 @@ const MenuScreen = props => {
         <Header title="GamesStack" />
       </View>
       <View style={styles.buttons}>
-        <MenuButton
-          image={menuImageOne}
-          onPress={onPressRegisterStudent}
-          text="Registrar estudiante"
-          marginBottom={20}
-        />
-        <MenuButton
-          image={menuImageTwo}
-          onPress={onPressStudentsList}
-          text="Lista de estudiantes"
-          marginBottom={20}
-        />
+        {!props.isGuest && (
+          <>
+            <MenuButton
+              image={menuImageOne}
+              onPress={onPressRegisterStudent}
+              text="Registrar estudiante"
+              marginBottom={20}
+            />
+            <MenuButton
+              image={menuImageTwo}
+              onPress={onPressStudentsList}
+              text="Lista de estudiantes"
+              marginBottom={20}
+            />
+          </>
+        )}
         <MenuButton
           image={menuImageThree}
           onPress={onPressEvaluateStudent}
