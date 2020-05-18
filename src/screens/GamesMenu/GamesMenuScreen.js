@@ -25,16 +25,19 @@ const GamesMenuScreen = props => {
     };
   }, []);
 
-  const dropdownStudents =
-    props.studentsList.length > 0
-      ? props.studentsList.map(student => {
-          const {nombres, apellidos} = student.datos;
-          return {
-            label: `${nombres} ${apellidos}`,
-            value: student._id,
-          };
-        })
-      : [];
+  let dropdownStudents;
+  if (!props.isGuest) {
+    dropdownStudents =
+      props.studentsList.length > 0
+        ? props.studentsList.map(student => {
+            const {nombres, apellidos} = student.datos;
+            return {
+              label: `${nombres} ${apellidos}`,
+              value: student._id,
+            };
+          })
+        : [];
+  }
 
   const onPressGameButton = gameNumber => {
     switch (gameNumber) {
