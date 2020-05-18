@@ -5,17 +5,18 @@
 */
 
 import React from 'react';
-import {View, Image, StyleSheet, StatusBar} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 
 import {PURPLE_COLOR} from '../../assets/styles/';
-
+import {FadeIn} from '../../components';
 import LogoUNACH from '../../assets/images/LogoUNACH.png';
 
 const SplashScreen = () => {
   return (
     <View style={styles.screenContainer}>
-      <StatusBar hidden={true} />
-      <Image style={styles.logo} source={LogoUNACH} />
+      <FadeIn>
+        <Image style={styles.logo} source={LogoUNACH} />
+      </FadeIn>
     </View>
   );
 };

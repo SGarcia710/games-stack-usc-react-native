@@ -1,18 +1,23 @@
-import {AppRegistry} from 'react-native';
+import {AppRegistry, StatusBar} from 'react-native';
 import React from 'react';
 
 import {name as appName} from './app.json';
 
 /* Redux */
 import {Provider} from 'react-redux';
-import {store} from './src/redux';
+import configureStore from './src/redux';
 
-import Navigator from './src/navigation';
+import Navigator from './src/navigator';
+
+const store = configureStore();
 
 const myAppWithStore = () => (
   <Provider store={store}>
+    <StatusBar hidden={true} />
     <Navigator />
   </Provider>
 );
 
 AppRegistry.registerComponent(appName, () => myAppWithStore);
+
+console.disableYellowBox = true;

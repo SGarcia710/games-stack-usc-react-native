@@ -15,8 +15,6 @@ import {
   DARK_BLUE_COLOR,
 } from '../../assets/styles';
 
-import {getStudentscontroller} from '../../controllers/studentsController';
-
 const StudentsListScreen = props => {
   const tableHeaders = [
     'Código',
@@ -28,128 +26,40 @@ const StudentsListScreen = props => {
     'Fecha de nacimiento',
   ];
   const widthArr = [150, 220, 190, 180, 180];
-  const tableData = [
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio Nuestra Señora de la Consolación',
-      'Cali',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio San Antonio María Clared',
-      'Bogotá',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio el Rosarío',
-      'Medellín',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Institución Educativa Antonio José Camacho',
-      'Zipaquirá',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio LaCordaire',
-      'Bucaramanga',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio Aleman',
-      'Santa Marta',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Centro Docente Bartolomé Mitre',
-      'Barranquilla',
-      '05/10/1996',
-    ],
-    [
-      56235,
-      [
-        <Text
-          style={{...styles.tableText, textAlign: 'left', fontWeight: '800'}}>
-          Daniel Alejandro{'\n'}
-        </Text>,
-        <Text style={{...styles.tableText, textAlign: 'left'}}>
-          García Ortiz
-        </Text>,
-      ],
-      'Colegio Nuestra Señora de la Consolación',
-      'Pereira',
-      '05/10/1996',
-    ],
-  ];
+
+  const studentsDataFormatted =
+    props.studentsList.length > 0
+      ? props.studentsList.map(student => {
+          const {
+            codigo,
+            nombres,
+            apellidos,
+            institucion,
+            ciudad,
+            pais,
+            nacimiento,
+          } = student.datos;
+          return [
+            codigo,
+            [
+              <Text
+                style={{
+                  ...styles.tableText,
+                  textAlign: 'left',
+                  fontWeight: '800',
+                }}>
+                {`${nombres}\n`}
+              </Text>,
+              <Text style={{...styles.tableText, textAlign: 'left'}}>
+                {apellidos}
+              </Text>,
+            ],
+            institucion,
+            `${ciudad}, ${pais}`,
+            nacimiento,
+          ];
+        })
+      : [];
 
   return (
     <View style={styles.screenContainer}>
@@ -173,9 +83,9 @@ const StudentsListScreen = props => {
           <View style={styles.tableDataWrapper}>
             <ScrollView>
               <Table>
-                {tableData.map((rowData, index) => (
+                {studentsDataFormatted.map(rowData => (
                   <Row
-                    key={uuidv4()}
+                    key={new Date().getTime}
                     data={rowData}
                     widthArr={widthArr}
                     style={styles.tableRow}

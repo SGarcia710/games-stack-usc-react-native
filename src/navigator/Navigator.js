@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 
 import React, {useState} from 'react';
-import {StatusBar} from 'react-native';
 
 /* React Navigation */
 import {NavigationContainer} from '@react-navigation/native';
@@ -24,7 +23,7 @@ const App = props => {
   const [showSplash, setShowSplash] = useState(true);
   setTimeout(() => {
     setShowSplash(false);
-  }, 5000);
+  }, 1);
 
   if (showSplash) {
     return <SplashScreen />;
@@ -34,7 +33,6 @@ const App = props => {
     <NavigationContainer ref={navigationRef}>
       {/* NavigationRef es para tener acceso a las funciones del Navigation en
       componentes que no estén en el Router. */}
-      <StatusBar hidden={true} />
       <Stack.Navigator>
         {!props.isLoggedIn ? (
           // https://reactnavigation.org/docs/auth-flow/

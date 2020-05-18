@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {StyleSheet, View} from 'react-native';
 
@@ -7,21 +7,24 @@ import menuImageTwo from '../../assets/images/MenuItemTwo.png';
 import menuImageThree from '../../assets/images/MenuItemThree.png';
 
 import {MenuButton, Header} from '../../components';
+import LoaderScreen from '../Loader';
 
 import {PURPLE_COLOR} from '../../assets/styles';
 
 const MenuScreen = props => {
-  const onPressRegisterStudent = () => {
-    props.navigation.navigate('RegisterStudent');
-  };
-  const onPressStudentsList = () => {
-    props.navigation.navigate('StudentsList');
-  };
-  const onPressEvaluateStudent = () => {
-    props.navigation.navigate('GamesMenu');
+  const onPressMenuButton = where => {
+    props.navigation.navigate(where);
   };
 
-  return (
+  useEffect(() => {
+    if (!props.isGuest && !props.studentsLoaded) {
+      props.fetchAllOwnStudents(props.user);
+    }
+  }, []);
+
+  return props.isFetching ? (
+    <LoaderScreen />
+  ) : (
     <View style={styles.screenContainer}>
       <View style={styles.header}>
         <Header title="GamesStack" />
@@ -31,13 +34,13 @@ const MenuScreen = props => {
           <>
             <MenuButton
               image={menuImageOne}
-              onPress={onPressRegisterStudent}
+              onPress={() => onPressMenuButton('RegisterStudent')}
               text="Registrar estudiante"
               marginBottom={20}
             />
             <MenuButton
               image={menuImageTwo}
-              onPress={onPressStudentsList}
+              onPress={() => onPressMenuButton('StudentsList')}
               text="Lista de estudiantes"
               marginBottom={20}
             />
@@ -45,7 +48,7 @@ const MenuScreen = props => {
         )}
         <MenuButton
           image={menuImageThree}
-          onPress={onPressEvaluateStudent}
+          onPress={() => onPressMenuButton('GamesMenu')}
           text="Evaluar estudiante"
         />
       </View>

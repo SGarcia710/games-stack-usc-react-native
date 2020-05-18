@@ -1,6 +1,15 @@
-import {createStudent} from '../services/students';
+import {createStudent, getAllOwnStudents} from '../services/students';
 
-export const createStudentController = async (names, lastNames, code, date) => {
+export const createStudentController = async (
+  names,
+  lastNames,
+  code,
+  date,
+  institute,
+  country,
+  city,
+  user,
+) => {
   try {
     const payload = {
       datos: {
@@ -8,6 +17,10 @@ export const createStudentController = async (names, lastNames, code, date) => {
         apellidos: lastNames,
         codigo: code,
         nacimiento: date,
+        institucion: institute,
+        pais: country,
+        ciudad: city,
+        instructor: user,
       },
     };
     // We catch the student to add it to the state
@@ -16,4 +29,12 @@ export const createStudentController = async (names, lastNames, code, date) => {
   } catch (error) {
     throw new Error('Ha ocurrido un error creando al estudiante');
   }
+};
+
+export const getAllOwnStudentsController = async userEmail => {
+  const payload = {
+    instructor: userEmail,
+  };
+  const response = await getAllOwnStudents(payload);
+  return response.data;
 };

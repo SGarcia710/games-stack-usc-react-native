@@ -1,11 +1,25 @@
 import {connect} from 'react-redux';
+import * as Students from '../../redux/actions/Students';
 
 import MenuScreen from './MenuScreen';
 
 const mapStateToProps = state => {
   return {
     isGuest: state.auth.isGuest,
+    user: state.auth.user,
+    isFetching: state.students.isFetching,
+    studentsLoaded: state.students.studentsLoaded,
   };
 };
 
-export default connect(mapStateToProps)(MenuScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllOwnStudents: userEmail =>
+      dispatch(Students.Actions.fetchAllOwnStudents(userEmail)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MenuScreen);

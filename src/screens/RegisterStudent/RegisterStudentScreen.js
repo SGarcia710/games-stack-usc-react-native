@@ -17,11 +17,25 @@ const RegisterStudentScreen = props => {
   const [lastNames, onChangeLastNames] = React.useState('');
   const [code, onChangeCode] = React.useState('');
   const [date, onChangeDate] = React.useState('');
+  const [institute, onChangeInstitute] = React.useState('');
+  const [country, onChangeCountry] = React.useState('');
 
-  const onPressButton = () => {
-    // console.log(`Email: ${email} y Password: ${password}.`);
-    createStudentController(names, lastNames, code, date);
-    props.navigation.navigate('Menu');
+  const onPressButton = async () => {
+    try {
+      await createStudentController(
+        names,
+        lastNames,
+        code,
+        date,
+        institute,
+        country,
+        'Cali',
+        props.user,
+      );
+      props.navigation.goBack();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -51,8 +65,8 @@ const RegisterStudentScreen = props => {
             textContentType="password"
             autoCompleteType="password"
             keyboardType="email-address"
-            onChange={onChangeLastNames}
-            value={lastNames}
+            onChange={onChangeInstitute}
+            value={institute}
             placeholder="Ingresar Institución"
           />
         </View>
@@ -71,8 +85,8 @@ const RegisterStudentScreen = props => {
             textContentType="password"
             autoCompleteType="password"
             keyboardType="email-address"
-            onChange={onChangeLastNames}
-            value={lastNames}
+            onChange={onChangeCountry}
+            value={country}
             placeholder="Seleccionar País"
           />
           <Input
