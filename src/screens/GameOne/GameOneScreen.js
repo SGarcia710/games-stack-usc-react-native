@@ -9,11 +9,13 @@ import {
 import {Button} from '../../components';
 import SessionFinishedScreen from '../SessionFinished/SessionFinishedScreen';
 
+import {generateLevelsGameOne} from '../../utils/Misc';
+
 import rick from '../../assets/images/Rick.png';
 import morty from '../../assets/images/Morty.png';
 
 // Constantes del juego
-const TIME_LIMIT = 3; // Segundos por nivel
+const TIME_LIMIT = 1; // Segundos por nivel
 const LEVELS = 3; // Cantidad de niveles
 
 class GameOneScreen extends Component {
@@ -28,6 +30,7 @@ class GameOneScreen extends Component {
       totalTime: 0,
       finished: false,
     };
+    console.log(generateLevelsGameOne(LEVELS));
   }
 
   checkAnswer(wasPressed) {
