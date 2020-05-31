@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {v4 as uuidv4} from 'uuid';
 
 import {StyleSheet, View, ScrollView, Text} from 'react-native';
@@ -39,6 +39,7 @@ const StudentsListScreen = props => {
             pais,
             nacimiento,
           } = student.datos;
+
           return [
             codigo,
             [
@@ -85,7 +86,7 @@ const StudentsListScreen = props => {
               <Table>
                 {studentsDataFormatted.map(rowData => (
                   <Row
-                    key={() => uuidv4()}
+                    key={rowData.toString()}
                     data={rowData}
                     widthArr={widthArr}
                     style={styles.tableRow}

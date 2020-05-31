@@ -1,23 +1,19 @@
 import React, {useState} from 'react';
 
-import {
-  StyleSheet,
-  View,
-  Text,
-  Modal,
-  Alert,
-  TouchableHighlight,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
-import {Button, DateInput, Input, NavigationHeader} from '../../components';
+import {
+  Button,
+  DateInput,
+  Input,
+  NavigationHeader,
+  ErrorModal,
+} from '../../components';
 
 import {
   BACKGROUND_COLOR,
   LIGHT_YELLOW_COLOR,
-  WHITE_COLOR,
   DARK_FONT_COLOR,
-  MULI_BOLD,
-  MULI_REGULAR,
 } from '../../assets/styles';
 
 const RegisterStudentScreen = props => {
@@ -104,27 +100,11 @@ const RegisterStudentScreen = props => {
 
   return (
     <View style={styles.screenContainer}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
-        <View style={modalStyles.centeredView}>
-          <View style={modalStyles.modalView}>
-            <Text style={modalStyles.modalText}>{modalMessage}</Text>
-            <TouchableHighlight
-              style={modalStyles.closeButton}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}>
-              <Text style={modalStyles.textStyle}>Entendido</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </Modal>
-
+      <ErrorModal
+        state={modalVisible}
+        message={modalMessage}
+        onDismiss={setModalVisible}
+      />
       <View style={styles.header}>
         <NavigationHeader title="Registro de estudiante" />
       </View>
@@ -190,47 +170,6 @@ const RegisterStudentScreen = props => {
   );
 };
 
-const modalStyles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: BACKGROUND_COLOR,
-    borderRadius: 10,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  closeButton: {
-    backgroundColor: LIGHT_YELLOW_COLOR,
-    borderRadius: 10,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: DARK_FONT_COLOR,
-    fontFamily: MULI_BOLD,
-    textAlign: 'center',
-  },
-  modalText: {
-    fontFamily: MULI_REGULAR,
-    fontSize: 18,
-    color: WHITE_COLOR,
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
 const styles = StyleSheet.create({
   screenContainer: {
     backgroundColor: BACKGROUND_COLOR,

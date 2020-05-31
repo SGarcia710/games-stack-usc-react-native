@@ -8,3 +8,4 @@ export * from './Label';
 export * from './GameCard';
 export * from './NavigationHeader';
 export * from './FadeIn';
+export * from './ErrorModal';

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {StyleSheet, View, Platform, KeyboardAvoidingView} from 'react-native';
 
-import {Header, Button, Input} from '../../components';
+import {Header, Button, Input, ErrorModal} from '../../components';
 
 import {
   BACKGROUND_COLOR,
@@ -13,13 +13,39 @@ import {
 const LoginScreen = props => {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
   const onPressLoginButton = () => {
-    props.checkUser(email, password);
+    if (checkForm()) props.checkUser(email, password);
+  };
+
+  const checkForm = () => {
+    const generateSentence = field => `Debes ingresar tu ${field}.`;
+
+    if (!email.length) {
+      setModalMessage(generateSentence('Email'));
+      setModalVisible(true);
+      return false;
+    }
+    if (!password.length) {
+      setModalMessage(generateSentence('Contraseña'));
+      setModalVisible(true);
+      return false;
+    }
+
+    return true;
   };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+      <ErrorModal
+        state={modalVisible}
+        message={modalMessage}
+        onDismiss={setModalVisible}
+      />
       <View style={styles.screenContainer}>
         <View style={styles.header}>
           <Header title="Bienvenido" subtitle="nuevamente a GamesStack" />
