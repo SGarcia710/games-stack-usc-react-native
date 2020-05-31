@@ -1,9 +1,12 @@
 // Colors
 export const PURPLE_COLOR = '#4F2FAA';
-export const LIGHT_PURPLE_COLOR = '#7962BD';
+export const BACKGROUND_COLOR = '#00629F';
+export const LIGHT_BACKGROUND_COLOR = '#7962BD';
+export const LIGHT_BLUE_COLOR = '#3491CB';
 export const LIGHT_GREEN_COLOR = '#6DD976';
 export const LIGHT_YELLOW_COLOR = '#F8C909';
 export const DARK_BLUE_COLOR = '#2A3551';
+export const DARK_FONT_COLOR = '#014C7A';
 export const BROWN_COLOR = '#342B2B';
 export const RED_COLOR = '#DD234C';
 export const DARK_PINK_COLOR = '#7C4A67';

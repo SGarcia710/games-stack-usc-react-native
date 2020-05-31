@@ -7,12 +7,12 @@ import {Table, Row} from 'react-native-table-component';
 import {NavigationHeader} from '../../components';
 
 import {
-  PURPLE_COLOR,
-  LIGHT_PURPLE_COLOR,
+  BACKGROUND_COLOR,
+  LIGHT_BLUE_COLOR,
   WHITE_COLOR,
   MULI_MEDIUM,
   MULI_REGULAR,
-  DARK_BLUE_COLOR,
+  DARK_FONT_COLOR,
 } from '../../assets/styles';
 
 const StudentsListScreen = props => {
@@ -21,11 +21,11 @@ const StudentsListScreen = props => {
     <Text style={{...styles.tableHeadersText, textAlign: 'left'}}>
       Nombre estudiante
     </Text>,
-    'Colegio',
-    'Ciudad',
+    'Institución',
+    'Ciudad y País',
     'Fecha de nacimiento',
   ];
-  const widthArr = [150, 220, 190, 180, 180];
+  const widthArr = [150, 200, 210, 180, 180];
 
   const studentsDataFormatted =
     props.studentsList.length > 0
@@ -103,7 +103,7 @@ const StudentsListScreen = props => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   },
   tableHeader: {
     height: 50,
-    backgroundColor: LIGHT_PURPLE_COLOR,
+    backgroundColor: LIGHT_BLUE_COLOR,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     marginBottom: 4,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   },
   tableText: {
     fontFamily: MULI_REGULAR,
-    color: DARK_BLUE_COLOR,
+    color: DARK_FONT_COLOR,
     textAlign: 'center',
   },
   tableRow: {

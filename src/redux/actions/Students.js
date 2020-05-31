@@ -3,6 +3,8 @@ export const Types = {
   FetchAllOwnStudents: 'students.fetchAllOwnStudents',
   SetAllOwnStudents: 'students.setAllOwnStudents',
   RequestFailure: 'students.requestFailure',
+  CreateStudent: 'students.createStudent',
+  AddCreatedStudent: 'students.addCreatedStudent',
 };
 
 export const Actions = {
@@ -13,6 +15,30 @@ export const Actions = {
   fetchAllOwnStudents: userEmail => ({
     type: Types.FetchAllOwnStudents,
     userEmail,
+  }),
+  createStudent: (
+    names,
+    lastNames,
+    code,
+    date,
+    institute,
+    country,
+    city,
+    user,
+  ) => ({
+    type: Types.CreateStudent,
+    names,
+    lastNames,
+    code,
+    date,
+    institute,
+    country,
+    city,
+    user,
+  }),
+  addCreatedStudent: createdStudent => ({
+    type: Types.AddCreatedStudent,
+    createdStudent,
   }),
   setAllOwnStudents: studentsList => ({
     type: Types.SetAllOwnStudents,

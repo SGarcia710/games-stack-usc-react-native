@@ -10,10 +10,10 @@ import {
   NavigationHeader,
 } from '../../components';
 import {
-  PURPLE_COLOR,
-  LIGHT_PURPLE_COLOR,
+  BACKGROUND_COLOR,
+  LIGHT_BLUE_COLOR,
   WHITE_COLOR,
-  BROWN_COLOR,
+  DARK_FONT_COLOR,
   LIGHT_YELLOW_COLOR,
 } from '../../assets/styles';
 
@@ -74,7 +74,7 @@ const GamesMenuScreen = props => {
                   key={() => uuidv4()}
                   onPress={() => props.setSelectedGame(game.id)}
                   text={game.title}
-                  backgroundColor={LIGHT_PURPLE_COLOR}
+                  backgroundColor={LIGHT_BLUE_COLOR}
                   fontColor={WHITE_COLOR}
                   marginBottom={11}
                 />
@@ -94,7 +94,7 @@ const GamesMenuScreen = props => {
               icon="arrow-right"
               iconPosition="right"
               backgroundColor={LIGHT_YELLOW_COLOR}
-              fontColor={BROWN_COLOR}
+              fontColor={DARK_FONT_COLOR}
               marginBottom={23}
               marginForText={132}
             />
@@ -107,7 +107,7 @@ const GamesMenuScreen = props => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
 
-import {WHITE_COLOR, LIGHT_PURPLE_COLOR, MULI_REGULAR} from '../assets/styles';
+import {WHITE_COLOR, LIGHT_BLUE_COLOR, MULI_REGULAR} from '../assets/styles';
 import {Label} from './';
 
 export const DateInput = ({
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     borderWidth: 0,
     borderRadius: 10,
-    backgroundColor: LIGHT_PURPLE_COLOR,
+    backgroundColor: LIGHT_BLUE_COLOR,
     height: 58,
     paddingHorizontal: 30,
     paddingVertical: 17,

@@ -2,11 +2,11 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Header, Button} from '../../components';
 import {
-  PURPLE_COLOR,
+  BACKGROUND_COLOR,
   WHITE_COLOR,
-  DARK_BLUE_COLOR,
+  DARK_FONT_COLOR,
   LIGHT_GREEN_COLOR,
-  LIGHT_PURPLE_COLOR,
+  LIGHT_BLUE_COLOR,
 } from '../../assets/styles';
 
 const LandingScreen = props => {
@@ -26,7 +26,7 @@ const LandingScreen = props => {
           text="Entrar como invitado"
           icon="users"
           iconPosition="left"
-          backgroundColor={LIGHT_PURPLE_COLOR}
+          backgroundColor={LIGHT_BLUE_COLOR}
           fontColor={WHITE_COLOR}
           marginBottom={23}
           marginForText={20}
@@ -37,7 +37,7 @@ const LandingScreen = props => {
           icon="arrow-right"
           iconPosition="right"
           backgroundColor={LIGHT_GREEN_COLOR}
-          fontColor={DARK_BLUE_COLOR}
+          fontColor={DARK_FONT_COLOR}
           marginForText={15}
         />
       </View>
@@ -47,7 +47,7 @@ const LandingScreen = props => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

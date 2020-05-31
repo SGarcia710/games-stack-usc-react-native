@@ -4,7 +4,7 @@ import {StyleSheet, SafeAreaView, Image, View} from 'react-native';
 import {
   LIGHT_YELLOW_COLOR,
   WHITE_COLOR,
-  BROWN_COLOR,
+  DARK_FONT_COLOR,
 } from '../../assets/styles';
 import {Button} from '../../components';
 import SessionFinishedScreen from '../SessionFinished/SessionFinishedScreen';
@@ -134,7 +134,7 @@ class GameOneScreen extends Component {
               onPress={() => this.onButtonPress()}
               text="Presiona aquí"
               backgroundColor={LIGHT_YELLOW_COLOR}
-              fontColor={BROWN_COLOR}
+              fontColor={DARK_FONT_COLOR}
             />
           </>
         </SafeAreaView>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import {WHITE_COLOR, DARK_BLUE_COLOR, MULI_BOLD} from '../assets/styles';
+import {WHITE_COLOR, DARK_FONT_COLOR, MULI_BOLD} from '../assets/styles';
 
 export const MenuButton = ({image, onPress, text, marginBottom}) => {
   return (
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginRight: 22,
   },
   buttonText: {
-    color: DARK_BLUE_COLOR,
+    color: DARK_FONT_COLOR,
     fontFamily: MULI_BOLD,
     fontSize: 20,
   },

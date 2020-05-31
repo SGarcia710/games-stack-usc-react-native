@@ -7,7 +7,7 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 
-import {PURPLE_COLOR} from '../../assets/styles/';
+import {BACKGROUND_COLOR} from '../../assets/styles/';
 import {FadeIn} from '../../components';
 import LogoUNACH from '../../assets/images/LogoUNACH.png';
 
@@ -23,7 +23,7 @@ const SplashScreen = () => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

@@ -3,10 +3,10 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import {Button} from '../../components';
 import {
-  PURPLE_COLOR,
+  BACKGROUND_COLOR,
   WHITE_COLOR,
   LIGHT_YELLOW_COLOR,
-  BROWN_COLOR,
+  DARK_FONT_COLOR,
   MULI_BLACK,
 } from '../../assets/styles';
 
@@ -25,7 +25,7 @@ const SessionFinishedScreen = () => {
           icon="arrow-left"
           iconPosition="left"
           backgroundColor={LIGHT_YELLOW_COLOR}
-          fontColor={BROWN_COLOR}
+          fontColor={DARK_FONT_COLOR}
           marginForText={34}
         />
         {/* <Button
@@ -34,7 +34,7 @@ const SessionFinishedScreen = () => {
           icon="repeat"
           iconPosition="left"
           backgroundColor={LIGHT_YELLOW_COLOR}
-          fontColor={BROWN_COLOR}
+          fontColor={DARK_FONT_COLOR}
           marginForText={26}
         /> */}
       </View>
@@ -44,7 +44,7 @@ const SessionFinishedScreen = () => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

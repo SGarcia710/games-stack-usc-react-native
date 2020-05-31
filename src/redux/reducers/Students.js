@@ -18,6 +18,19 @@ const fetchAllOwnStudents = (state, action) => ({
   isFetching: true,
 });
 
+const createStudent = (state, action) => ({
+  ...state,
+  isFetching: true,
+});
+
+const addCreatedStudent = (state, {createdStudent}) => {
+  return {
+    ...state,
+    isFetching: false,
+    studentsList: [...state.studentsList, createdStudent],
+  };
+};
+
 const setAllOwnStudents = (state, {studentsList}) => {
   return {...state, isFetching: false, studentsLoaded: true, studentsList};
 };
@@ -32,7 +45,9 @@ const requestFailure = (state, action) => ({
 const reducerMap = {
   [Students.Types.SetSelectedStudent]: setSelectedStudent,
   [Students.Types.FetchAllOwnStudents]: fetchAllOwnStudents,
+  [Students.Types.CreateStudent]: createStudent,
   [Students.Types.SetAllOwnStudents]: setAllOwnStudents,
+  [Students.Types.AddCreatedStudent]: addCreatedStudent,
   [Students.Types.RequestFailure]: requestFailure,
 };
 

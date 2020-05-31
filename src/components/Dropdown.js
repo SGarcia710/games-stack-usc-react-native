@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import {Label} from './';
 
-import {WHITE_COLOR, LIGHT_PURPLE_COLOR, MULI_REGULAR} from '../assets/styles';
+import {WHITE_COLOR, LIGHT_BLUE_COLOR, MULI_REGULAR} from '../assets/styles';
 
 export const Dropdown = ({
   labelText,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   dropdown: {
     borderWidth: 0,
     borderRadius: 10,
-    backgroundColor: LIGHT_PURPLE_COLOR,
+    backgroundColor: LIGHT_BLUE_COLOR,
     fontFamily: MULI_REGULAR,
     fontSize: 18,
     color: WHITE_COLOR,

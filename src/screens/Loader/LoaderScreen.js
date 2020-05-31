@@ -12,7 +12,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import LottieView from 'lottie-react-native';
 
-import {PURPLE_COLOR} from '../../assets/styles/';
+import {BACKGROUND_COLOR} from '../../assets/styles/';
 
 import LoaderAnimation from '../../assets/animations/loader5.json';
 
@@ -31,7 +31,7 @@ const LoaderScreen = () => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

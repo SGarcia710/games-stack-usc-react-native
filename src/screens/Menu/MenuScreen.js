@@ -9,7 +9,7 @@ import menuImageThree from '../../assets/images/MenuItemThree.png';
 import {MenuButton, Header} from '../../components';
 import LoaderScreen from '../Loader';
 
-import {PURPLE_COLOR} from '../../assets/styles';
+import {BACKGROUND_COLOR} from '../../assets/styles';
 
 const MenuScreen = props => {
   const onPressMenuButton = where => {
@@ -58,7 +58,7 @@ const MenuScreen = props => {
 
 const styles = StyleSheet.create({
   screenContainer: {
-    backgroundColor: PURPLE_COLOR,
+    backgroundColor: BACKGROUND_COLOR,
     width: '100%',
     height: '100%',
     paddingHorizontal: 79,

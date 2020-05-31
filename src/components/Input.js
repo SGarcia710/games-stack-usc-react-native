@@ -1,18 +1,17 @@
 import React from 'react';
 
 import {TextInput, View, StyleSheet} from 'react-native';
-import {WHITE_COLOR, LIGHT_PURPLE_COLOR, MULI_REGULAR} from '../assets/styles';
+import {WHITE_COLOR, LIGHT_BLUE_COLOR, MULI_REGULAR} from '../assets/styles';
 import {Label} from './';
 
 export const Input = ({
   labelText,
-  textContentType,
-  autoCompleteType,
   keyboardType,
   onChange,
   value,
   placeholder,
   marginBottom,
+  secureTextEntry,
 }) => {
   return (
     <View
@@ -22,16 +21,18 @@ export const Input = ({
       <Label text={labelText} />
       <TextInput
         placeholderTextColor={WHITE_COLOR}
-        textContentType={textContentType}
-        spellCheck={false}
-        autoCorrect={false}
-        autoCapitalize="none"
-        autoCompleteType={autoCompleteType}
-        keyboardType={keyboardType}
+        autoCorrect={secureTextEntry ? false : true}
+        autoCapitalize={
+          secureTextEntry || keyboardType === 'email-address'
+            ? 'none'
+            : 'sentences'
+        }
+        keyboardType={keyboardType ? keyboardType : 'default'}
         style={styles.input}
         onChange={text => {
           onChange(text.nativeEvent.text);
         }}
+        secureTextEntry={secureTextEntry ? true : false}
         placeholder={placeholder}
         value={value}
       />
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 0,
     borderRadius: 10,
-    backgroundColor: LIGHT_PURPLE_COLOR,
+    backgroundColor: LIGHT_BLUE_COLOR,
     fontFamily: MULI_REGULAR,
     fontSize: 18,
     color: WHITE_COLOR,

@@ -1,11 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-import {
-  MULI_REGULAR,
-  WHITE_COLOR,
-  LIGHT_PURPLE_COLOR,
-} from '../../assets/styles';
+import {MULI_REGULAR, WHITE_COLOR, LIGHT_BLUE_COLOR} from '../../assets/styles';
 
 export const UserIndicator = props => {
   return (
@@ -26,7 +22,7 @@ const styles = StyleSheet.create({
   image: {
     width: 32,
     height: 32,
-    backgroundColor: LIGHT_PURPLE_COLOR,
+    backgroundColor: LIGHT_BLUE_COLOR,
     borderRadius: 5,
   },
   userName: {
