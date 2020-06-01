@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {v4 as uuidv4} from 'uuid';
 
 import {StyleSheet, View} from 'react-native';
 import {
@@ -8,6 +7,7 @@ import {
   Label,
   GameCard,
   NavigationHeader,
+  ErrorModal,
 } from '../../components';
 import {
   BACKGROUND_COLOR,
@@ -18,6 +18,9 @@ import {
 } from '../../assets/styles';
 
 const GamesMenuScreen = props => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
   useEffect(() => {
     return function cleanup() {
       props.setSelectedGame(null);
@@ -40,6 +43,11 @@ const GamesMenuScreen = props => {
   }
 
   const onPressGameButton = gameNumber => {
+    if (!props.isGuest && !props.selectedStudent) {
+      setModalMessage('Debes seleccionar un estudiante primero.');
+      setModalVisible(true);
+      return;
+    }
     switch (gameNumber) {
       case 1:
         props.navigation.navigate('GameOne');
@@ -51,6 +59,11 @@ const GamesMenuScreen = props => {
 
   return (
     <View style={styles.screenContainer}>
+      <ErrorModal
+        state={modalVisible}
+        message={modalMessage}
+        onDismiss={setModalVisible}
+      />
       <View style={styles.header}>
         <NavigationHeader title="Evaluar estudiante" />
       </View>
@@ -71,7 +84,7 @@ const GamesMenuScreen = props => {
             {props.gamesList.map(game => {
               return (
                 <Button
-                  key={() => uuidv4()}
+                  key={game.toString()}
                   onPress={() => props.setSelectedGame(game.id)}
                   text={game.title}
                   backgroundColor={LIGHT_BLUE_COLOR}
