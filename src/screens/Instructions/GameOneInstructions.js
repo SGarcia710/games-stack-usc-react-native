@@ -26,7 +26,7 @@ const GameOneInstructions = ({onNextStageHandler, stage}) => {
         <View style={styles.indicationWrapper('35%')}>
           <Text style={styles.indicationText}>
             {`Cuando ${
-              stage !== 'normal' ? 'no ' : ''
+              stage === 'prueba invertida' ? 'no ' : ''
             }aparezca${'\n'}esta imagen:`}
           </Text>
           <Image source={RedFlower} />
@@ -43,7 +43,7 @@ const GameOneInstructions = ({onNextStageHandler, stage}) => {
       </View>
       <Button
         onPress={onNextStageHandler}
-        text="Empezar entrenamiento"
+        text={`Empezar ${stage}`}
         icon="arrow-right"
         iconPosition="right"
         backgroundColor={LIGHT_YELLOW_COLOR}

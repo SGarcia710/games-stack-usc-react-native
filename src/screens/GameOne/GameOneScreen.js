@@ -5,6 +5,7 @@ import {
   LIGHT_YELLOW_COLOR,
   WHITE_COLOR,
   DARK_FONT_COLOR,
+  BACKGROUND_COLOR,
 } from '../../assets/styles';
 import {Button} from '../../components';
 import SessionFinishedScreen from '../SessionFinished/SessionFinishedScreen';
@@ -17,8 +18,8 @@ import GreenFlower from '../../assets/images/GreenFlower.png';
 
 // Constantes del juego
 const DELAY_PER_LEVEL = 1000; // Segundos por nivel (1000ms = 1 segundo)
-const TRAINING_LEVELS = 2;
-const LEVELS = 2; // Cantidad de niveles = 2 minutos => 120 niveles  (1 x segundo)
+const TRAINING_LEVELS = 5;
+const LEVELS = 5; // Cantidad de niveles = 2 minutos => 120 niveles  (1 x segundo)
 const GAME_MAP = {
   training: generateLevelsGameOne(TRAINING_LEVELS),
   normal: generateLevelsGameOne(LEVELS),
@@ -228,7 +229,7 @@ const GameOneScreen = () => {
         return (
           <GameOneInstructions
             onNextStageHandler={onNextStageHandler}
-            stage="normal"
+            stage="entrenamiento"
           />
         );
       case 1:
@@ -241,11 +242,12 @@ const GameOneScreen = () => {
                 source={levels[level] ? RedFlower : GreenFlower}
               />
             </View>
+
             <Button
               onPress={() => onButtonPress()}
-              text="Presiona aquí"
-              backgroundColor={LIGHT_YELLOW_COLOR}
-              fontColor={DARK_FONT_COLOR}
+              text="Botón"
+              backgroundColor={BACKGROUND_COLOR}
+              fontColor={WHITE_COLOR}
             />
           </SafeAreaView>
         );
@@ -253,7 +255,7 @@ const GameOneScreen = () => {
         return (
           <GameOneInstructions
             onNextStageHandler={onNextStageHandler}
-            stage="normal"
+            stage="prueba normal"
           />
         );
       case 3:
@@ -268,9 +270,9 @@ const GameOneScreen = () => {
             </View>
             <Button
               onPress={() => onButtonPress()}
-              text="Presiona aquí"
-              backgroundColor={LIGHT_YELLOW_COLOR}
-              fontColor={DARK_FONT_COLOR}
+              text="Botón"
+              backgroundColor={BACKGROUND_COLOR}
+              fontColor={WHITE_COLOR}
             />
           </SafeAreaView>
         );
@@ -278,7 +280,7 @@ const GameOneScreen = () => {
         return (
           <GameOneInstructions
             onNextStageHandler={onNextStageHandler}
-            stage="inverted"
+            stage="prueba invertida"
           />
         );
       case 5:
@@ -293,9 +295,9 @@ const GameOneScreen = () => {
             </View>
             <Button
               onPress={() => onButtonPress()}
-              text="Presiona aquí"
-              backgroundColor={LIGHT_YELLOW_COLOR}
-              fontColor={DARK_FONT_COLOR}
+              text="Botón"
+              backgroundColor={BACKGROUND_COLOR}
+              fontColor={WHITE_COLOR}
             />
           </SafeAreaView>
         );

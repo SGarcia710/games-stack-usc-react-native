@@ -23,7 +23,7 @@ const App = props => {
   const [showSplash, setShowSplash] = useState(true);
   setTimeout(() => {
     setShowSplash(false);
-  }, 1);
+  }, 5000);
 
   if (showSplash) {
     return <SplashScreen />;
