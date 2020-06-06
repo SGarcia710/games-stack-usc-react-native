@@ -1,4 +1,4 @@
-# GameStack USC
+# GameStack USC 🎮
 
 This is a work in progres so maybe you will experience some bugs and undesired behaviors.
 
